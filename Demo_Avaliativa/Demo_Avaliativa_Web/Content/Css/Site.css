@@ -1,0 +1,16 @@
+﻿.tamanho_input {
+    width:300px;
+}
+.tamanho_button {
+    width:100px;
+}
+
+
+table,
+thead,
+tr,
+tbody,
+th,
+td {
+    text-align: center;
+}

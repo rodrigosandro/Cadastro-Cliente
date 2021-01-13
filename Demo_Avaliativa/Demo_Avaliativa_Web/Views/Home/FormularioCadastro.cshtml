@@ -1,0 +1,145 @@
+﻿@model Demo_Avaliativa_Web.DAO.Entidades.Cliente
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FormularioCadastro</title>
+    <link href="~/Content/Css/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Css/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <br />
+        <h4>Cadastro de Cliente</h4>
+        <hr />
+    </div>
+
+    <div class="container">
+        <form method="post" action="/Home/FormResponse" id="adiciona-cliente">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <input type="hidden" name="id" value="@Model.Id">
+            
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control tamanho_input"} })
+                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <br />
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control tamanho_input" } })
+                    @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <br />
+            <div class="form-group row">
+                @Html.Label("Tipo", htmlAttributes: new { @class = "control-label col-md-1" })
+                <div class="col-md-10">
+
+                    <select id="Tipo" name="Tipo" class="form-control tamanho_input">
+                        @foreach (var tipo in ViewBag.TipoLista)
+                        {
+                            <option id="valorTipo" value="@tipo.Id">@tipo.Descricao</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Gravar" class="btn btn-success tamanho_button" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <br />
+
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Tipo</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tabela-cliente">
+
+                @foreach (var cliente in ViewBag.listClients)
+                {
+                    <tr>
+                        <td>@cliente.Id</td>
+                        <td>@cliente.Nome</td>
+                        <td>@cliente.Telefone</td>
+                        <td>@cliente.TipoTelefone.Descricao</td>
+                        <td>
+                            @Html.ActionLink("Editar","edit",new { id = cliente.Id }, new {@class = "btn btn-warning" })
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" onclick="DeletaCliente(@cliente.Id)">Excluir</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript">
+
+
+        function DeletaCliente(idCliente) {
+
+            if (confirm("Deseja Prosseguir com a exclusão do Dado?")) {
+                var redirectPage = "http://" + window.location.host + "/Home/Delete/" + idCliente;
+                window.location.replace(redirectPage);
+            }
+        };
+
+        function mascara(o, f) {
+            v_obj = o
+            v_fun = f
+            setTimeout("execmascara()", 1)
+        }
+        function execmascara() {
+            v_obj.value = v_fun(v_obj.value)
+        }
+        function mtel(v) {
+            v = v.replace(/\D/g, ""); //Remove tudo o que não é dígito
+            v = v.replace(/^(\d{2})(\d)/g, "($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+            v = v.replace(/(\d)(\d{4})$/, "$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+            return v;
+        }
+        function id(el) {
+            return document.getElementById(el);
+        }
+        window.onload = function () {
+            id('Telefone').onkeyup = function () {
+                mascara(this, mtel);
+            }
+        }
+
+    </script>
+</body>
+</html>

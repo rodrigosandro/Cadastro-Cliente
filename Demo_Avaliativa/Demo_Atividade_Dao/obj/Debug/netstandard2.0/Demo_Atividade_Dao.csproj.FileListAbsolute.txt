@@ -1,0 +1,9 @@
+C:\dev\Projeto\Demo_Avaliativa\Demo_Atividade_Dao\bin\Debug\netstandard2.0\Demo_Atividade_Dao.deps.json
+C:\dev\Projeto\Demo_Avaliativa\Demo_Atividade_Dao\bin\Debug\netstandard2.0\Demo_Atividade_Dao.dll
+C:\dev\Projeto\Demo_Avaliativa\Demo_Atividade_Dao\bin\Debug\netstandard2.0\Demo_Atividade_Dao.pdb
+C:\dev\Projeto\Demo_Avaliativa\Demo_Atividade_Dao\obj\Debug\netstandard2.0\Demo_Atividade_Dao.csprojAssemblyReference.cache
+C:\dev\Projeto\Demo_Avaliativa\Demo_Atividade_Dao\obj\Debug\netstandard2.0\Demo_Atividade_Dao.csproj.CoreCompileInputs.cache
+C:\dev\Projeto\Demo_Avaliativa\Demo_Atividade_Dao\obj\Debug\netstandard2.0\Demo_Atividade_Dao.AssemblyInfoInputs.cache
+C:\dev\Projeto\Demo_Avaliativa\Demo_Atividade_Dao\obj\Debug\netstandard2.0\Demo_Atividade_Dao.AssemblyInfo.cs
+C:\dev\Projeto\Demo_Avaliativa\Demo_Atividade_Dao\obj\Debug\netstandard2.0\Demo_Atividade_Dao.dll
+C:\dev\Projeto\Demo_Avaliativa\Demo_Atividade_Dao\obj\Debug\netstandard2.0\Demo_Atividade_Dao.pdb
