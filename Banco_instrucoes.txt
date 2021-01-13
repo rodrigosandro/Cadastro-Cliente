@@ -1,0 +1,7 @@
+
+Executar esse script no Banco depois de rodar o Migration...
+
+insert into TipoTelefone values('celular')
+insert into TipoTelefone values('Residencial')
+insert into TipoTelefone values('Trabalho')
+insert into TipoTelefone values('Whatsapp')
